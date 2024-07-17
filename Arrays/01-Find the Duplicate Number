@@ -1,0 +1,29 @@
+class Solution {
+    public int findDuplicate(int[] nums) {
+    sort(nums);
+    for(int i=0;i<nums.length;i++){
+        if(nums[i] !=i+1){
+            return nums[i];
+        }
+    }
+    return -1;
+    
+    }
+    //cyclic sort
+    void sort(int[] nums){
+        int i=0;
+        while(i<nums.length){
+            int currect=nums[i]-1;
+            if(nums[i] !=nums[currect]){
+                swap(nums,i,currect);
+            }else{
+                i++;
+            }
+        }
+    }
+    static void swap(int[] arr,int f,int s){
+        int temp=arr[f];
+        arr[f]=arr[s];
+        arr[s]=temp;
+    }
+}
